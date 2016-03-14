@@ -1,0 +1,112 @@
+/*********** Fonts ***********/
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Muli'), url(/sites/gta/Style%20Library/fonts/roboto/Roboto-Thin.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(/sites/gta/Style%20Library/fonts/roboto/Roboto-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(/sites/gta/Style%20Library/fonts/roboto/Roboto-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(/sites/gta/Style%20Library/fonts/roboto/Roboto-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(/sites/gta/Style%20Library/fonts/roboto/Roboto-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Roboto Black'), local('Roboto-Black'), url(/sites/gta/Style%20Library/fonts/roboto/Roboto-Black.ttf) format('truetype');
+}
+
+/*********** Hide QL ***********/
+#sideNavBox {
+  display: none !important;
+}
+
+#contentBox {
+  margin-left: 0px !important;
+}
+
+/*********** container-links ************/
+main {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+nav {
+  margin-left: 20px;
+}
+
+.container-links {
+  display: block;
+  font-family: "Roboto Bold", "Helvetica", "Segoe UI", "Arial", sans-serif !important;
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.container-links {
+  border: solid #ddd 1px;
+  border-radius: 5px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.75);
+}
+
+.container-links ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-left: 5px;
+}
+
+.container-links-title {
+  font-size: 1.5em;
+  border-radius: 5px 5px 0px 0px;
+  padding: 5px 10px;
+  color: #fff;
+  display: block;
+  text-align: left;
+  pointer-events: none;
+  cursor: default;
+}
+
+.linksList a{
+  display: block;
+  padding: 2px;
+  margin: 2px 0px;
+  text-decoration: none;
+  font-size: 1.15em;
+  color: #667cb9;
+}
+
+.linksList a:hover {
+  text-decoration: none;
+  background-color: #9ed0d3;
+  color: white;
+}
+
+#siteNavTitle {
+  background-color: #667cb9;
+}
+
+#helpNavTitle {
+  background-color: #9abedd;
+}
