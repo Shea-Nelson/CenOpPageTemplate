@@ -1,9 +1,13 @@
-var processId = '';
 var siteNavListName = 'siteNavLinks';
-var customLinksListName = 'customLinks'
+var customLinksListName = 'customLinks';
+var announcementsListName = 'Announcements';
 var currentUrl = window.location.href;
 currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/Pages'));
-
+var processId = currentUrl.substring(currentUrl.lastIndexOf('/') + 1, currentUrl.length);
+var parentProcessId = currentUrl.substring(currentUrl.lastIndexOf('process/') +7, currentUrl.lastIndexOf('/'));
+var dateToday = new Date();
+console.log(processId);
+console.log(parentProcessId);
 /************ Get SiteNav Links ***********/
 $.ajax({
   url: currentUrl + "/_api/web/lists/getbytitle('" + siteNavListName + "')/items?$orderby=orderLinks",
@@ -56,4 +60,50 @@ $.ajax({
     console.log(data);
   },
 
+});
+
+/*********** Get Current Announcements ***********/
+$.ajax({
+  url: currentUrl + "/_api/web/lists/getbytitle('" + announcementsListName + "')/items?$filter=Expires ge datetime'" + dateToday.toISOString() + "'",
+  method: 'GET',
+  headers: { "Accept": "application/json; odata=verbose" },
+  success: function (data) {
+    var announcementsHtml = '<ul>';
+    console.log(currentUrl + "/_api/web/lists/getbytitle('" + announcementsListName + "')/items");
+    console.log(data.d.results);
+    $.each(data.d.results, function (i, item) {
+      console.log(data.d.results[i].Title);
+    });
+    $.each(data.d.results, function (i, item) {
+      announcementsHtml = announcementsHtml + "<li> <img class='imgAnnouncements' alt='megaphone' src='/sites/gta/SiteAssets/megaPhone.svg'/>" + data.d.results[i].Title + "</li>";
+    /* announcementsHtml = announcementsHtml + "<li> <object type='image/svg+xml' data='/sites/gta/SiteAssets/megaPhone.svg' class='imgAnnouncements'><object/>" + data.d.results[i].Title + "</li>"; */
+  });
+    announcementsHtml = announcementsHtml + "</ul>";
+    console.log(announcementsHtml);
+    $("#announcements").html(announcementsHtml);
+  },
+
+  error: function (data) {
+    console.log('failure');
+    console.log(data);
+  },
+
+});
+
+$('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.html', function() {
+
+  /************ Show Only Relevant Process ***********/
+  if (parentProcessId.length > 0) {
+    console.log('This is a subprocess');
+  } else if (processId != 'gta') {
+    console.log('this is a process');
+    $('#supportProcess').css('display', 'none');
+    $('.containerProcess').css('display', 'none');
+    $('#businessProcess').css('width', '80%');
+    console.log('#container' + processId.toUpperCase());
+    $('#container' + processId.toUpperCase()).css('display', 'inline-block');
+    $('#container' + processId.toUpperCase() + ' .process .cardTitle').css('background', 'radial-gradient(ellipse at center, rgba(244,236,134,0.2) 0%, rgba(106,171,107,0.4) 100%);');
+  } else {
+    console.log('something is wrong');
+  }
 });
