@@ -76,7 +76,6 @@ $.ajax({
     });
     $.each(data.d.results, function (i, item) {
       announcementsHtml = announcementsHtml + "<li> <img class='imgAnnouncements' alt='megaphone' src='/sites/gta/SiteAssets/megaPhone.svg'/>" + data.d.results[i].Title + "</li>";
-    /* announcementsHtml = announcementsHtml + "<li> <object type='image/svg+xml' data='/sites/gta/SiteAssets/megaPhone.svg' class='imgAnnouncements'><object/>" + data.d.results[i].Title + "</li>"; */
   });
     announcementsHtml = announcementsHtml + "</ul>";
     console.log(announcementsHtml);
@@ -90,7 +89,7 @@ $.ajax({
 
 });
 
-$('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.html', function() {
+$('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.html', function () {
 
   /************ Show Only Relevant Process ***********/
   if (parentProcessId.length > 0) {
@@ -99,10 +98,13 @@ $('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.h
     console.log('this is a process');
     $('#supportProcess').css('display', 'none');
     $('.containerProcess').css('display', 'none');
-    $('#businessProcess').css('width', '80%');
     console.log('#container' + processId.toUpperCase());
     $('#container' + processId.toUpperCase()).css('display', 'inline-block');
-    $('#container' + processId.toUpperCase() + ' .process .cardTitle').css('background', 'radial-gradient(ellipse at center, rgba(244,236,134,0.2) 0%, rgba(106,171,107,0.4) 100%);');
+    /*$('#container' + processId.toUpperCase() + ' .process .cardTitle').css('background', 'radial-gradient(ellipse at center, rgba(244,236,134,0.2) 0%, rgba(106,171,107,0.4) 100%);');
+*/
+    $('#container' + processId.toUpperCase() + ' .process .cardTitle').css('background-color', '#9ed0d3');
+
+    $('#businessProcess').addClass('zoomProcessOutline');
   } else {
     console.log('something is wrong');
   }
