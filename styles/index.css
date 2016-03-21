@@ -129,6 +129,7 @@ nav {
     list-style-type: none;
     padding: 0px;
     margin-left: 5px;
+    margin-right: 5px;
 }
 
 .container-links-title {
@@ -141,7 +142,7 @@ nav {
   cursor: default;
 }
 
-.linksList a{
+.linksList a {
   display: block;
   padding: 2px;
   margin: 2px 0px;
@@ -170,26 +171,30 @@ nav {
   text-align: center;
   list-style-type: none;
   padding: 0px;
-  margin: 5px 5px 40px 5px;
+  margin: 5px 5px 20px 5px;
 }
 
 #announcements li {
   position: relative;
+  width: 100%;
   font-size: 1.5em;
   font-weight: 500;
   /*color: #333;
   background: radial-gradient(ellipse at center, rgba(102,124,185,0.95) 0%, rgba(102,124,185,0.7) 100%);
 */
-  /*background-color: #DDDB90;
+  /*background-color: #DDDB90;   */
   background-color: #dfdfa0;
-  */
-  background-color: #f0b14e;
-  color: #ddd;
+
+  /*background-color: #f0b14e;    */
+  color: #333;
   letter-spacing: 1.5px;
   border: solid #333 1px;
   padding: 10px;
-  margin: 5px;
   border-radius: 5px;
+
+  -webkit-box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.75);
 }
 
 #siteNavTitle {

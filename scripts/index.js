@@ -4,7 +4,7 @@ var announcementsListName = 'Announcements';
 var currentUrl = window.location.href;
 currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/Pages'));
 var processId = currentUrl.substring(currentUrl.lastIndexOf('/') + 1, currentUrl.length);
-var parentProcessId = currentUrl.substring(currentUrl.lastIndexOf('process/') +7, currentUrl.lastIndexOf('/'));
+var parentProcessId = currentUrl.substring(currentUrl.lastIndexOf('process/') +8, currentUrl.lastIndexOf('/'));
 var dateToday = new Date();
 console.log(processId);
 console.log(parentProcessId);
@@ -92,8 +92,17 @@ $.ajax({
 $('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.html', function () {
 
   /************ Show Only Relevant Process ***********/
-  if (parentProcessId.length > 0) {
+  if (parentProcessId.length > 1) {
     console.log('This is a subprocess');
+    $('#supportProcess').css('display', 'none');
+    $('.containerProcess').css('display', 'none');
+    console.log('#container' + parentProcessId.toUpperCase());
+    $('#container' + parentProcessId.toUpperCase()).css('display', 'inline-block');
+    /*$('#container' + processId.toUpperCase() + ' .process .cardTitle').css('background', 'radial-gradient(ellipse at center, rgba(244,236,134,0.2) 0%, rgba(106,171,107,0.4) 100%);');
+*/
+    $('#title' + processId.toUpperCase()).css('background-color', '#9ed0d3');
+
+    $('#businessProcess').addClass('zoomProcessOutline');
   } else if (processId != 'gta') {
     console.log('this is a process');
     $('#supportProcess').css('display', 'none');

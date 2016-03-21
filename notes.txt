@@ -22,3 +22,6 @@ console.log(processContainerHeight + 'px');
 
 
 https://dorspdev13.fdor.dor.state.fl.us/sites/gta/process/am//_api/web/lists/getbytitle('contactsList')/items
+
+
+/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='fdor/nelsons'

@@ -11,7 +11,7 @@ $.ajax({
     var visionHtml = '<div class="articleTitle">Vision</div>';
     var missionHtml = '<div class="articleTitle">Mission</div>';
     var projectsHtml = '<div class="articleTitle">Projects</div>';
-    console.log(currentUrl + "/_api/web/lists/getbytitle('" + aboutUsListName + "')/items");
+    console.log(currentUrl + "/_api/web/lists/getbytitle('" + aboutUsListName + "')/items?$orderby=orderContacts");
     console.log(data.d.results);
     $.each(data.d.results, function (i, item) {
       console.log(data.d.results[i].aboutType);
@@ -40,8 +40,8 @@ $.ajax({
       projectsHtml = projectsHtml + "<div class='articleContent'>" + data.d.results[i].articleContent + "</div>";
 $     ("#projects").addClass('articleContainerShow');
       $("#projects").html(projectsHtml);
-    };
-  });;
+    }
+  });
     console.log(purposeHtml);
   },
 
