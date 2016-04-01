@@ -1,10 +1,10 @@
 #contacts {
   text-align: left;
-  background-color: #fff;
   color: #fff;
   font-family: "roboto";
   font-weight: 400;
-  font-size: 1.3em;
+  font-size: 1.35em;
+  letter-spacing: 1.4px;
 }
 
 .contactsContainer {
@@ -42,7 +42,7 @@
 }
 
 .contact:nth-child(odd) {
-  background-color: #9abedd;
+  background-color: #9ABEDD;
 }
 
 .contact:nth-child(even) {
@@ -52,8 +52,14 @@
 .preferredName {
   font-family: "Roboto Slab";
   font-size: 2em;
-  font-weight: 500;
+  font-weight: 700;
   width: 100%;
+  letter-spacing: 1.5px;
+}
+
+.emailImg img{
+  height: 24px;
+  margin-left: 20px;
 }
 
 .responsibilities {

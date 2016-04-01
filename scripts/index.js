@@ -1,10 +1,12 @@
-var siteNavListName = 'siteNavLinks';
-var customLinksListName = 'customLinks';
+var siteNavListName = 'Site Navigation Links';
+var customLinksListName = 'Helpful Links';
 var announcementsListName = 'Announcements';
-var currentUrl = window.location.href;
-currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/Pages'));
+var currentUrl = window.location.href.toUpperCase();
+console.log(currentUrl);
+currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/PAGES'));
+console.log(currentUrl);
 var processId = currentUrl.substring(currentUrl.lastIndexOf('/') + 1, currentUrl.length);
-var parentProcessId = currentUrl.substring(currentUrl.lastIndexOf('process/') +8, currentUrl.lastIndexOf('/'));
+var parentProcessId = currentUrl.substring(currentUrl.lastIndexOf('/PROCESS/') + 9, currentUrl.lastIndexOf('/'));
 var dateToday = new Date();
 console.log(processId);
 console.log(parentProcessId);
@@ -89,11 +91,12 @@ $.ajax({
 
 });
 
-$('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.html', function () {
+$('#processOutline').load('/sites/gta/SiteAssets/code/gta_process_map/index.html', function () {
 
   /************ Show Only Relevant Process ***********/
   if (parentProcessId.length > 1) {
     console.log('This is a subprocess');
+    addGlobalNavigation('subprocess');
     $('#supportProcess').css('display', 'none');
     $('.containerProcess').css('display', 'none');
     console.log('#container' + parentProcessId.toUpperCase());
@@ -104,6 +107,7 @@ $('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.h
 
     $('#businessProcess').addClass('zoomProcessOutline');
   } else if (processId != 'gta') {
+    addGlobalNavigation('process');
     console.log('this is a process');
     $('#supportProcess').css('display', 'none');
     $('.containerProcess').css('display', 'none');
@@ -112,9 +116,17 @@ $('#processOutline').load('/sites/gta/SiteAssets/GTA%20Process%20Outline/index.h
     /*$('#container' + processId.toUpperCase() + ' .process .cardTitle').css('background', 'radial-gradient(ellipse at center, rgba(244,236,134,0.2) 0%, rgba(106,171,107,0.4) 100%);');
 */
     $('#container' + processId.toUpperCase() + ' .process .cardTitle').css('background-color', '#9ed0d3');
+    $('#container' + processId.toUpperCase() + ' .process .cardTitle' + ' a').css('color', '#555');
+    $('#container' + processId.toUpperCase() + ' .process .cardTitle' + ' a:visited').css('color', '#555');
 
     $('#businessProcess').addClass('zoomProcessOutline');
   } else {
     console.log('something is wrong');
+  }
+
+  /************ Add Global Bread Crumbs ************/
+
+  function addGlobalNavigation(processType) {
+    document.styleSheets[0].addRule('#pageTitle::before', 'content: "'+processType+'";');
   }
 });

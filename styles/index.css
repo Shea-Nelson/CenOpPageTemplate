@@ -54,7 +54,7 @@
   src: local('RobotoSlab Thin'), local('RobotoSlab-Thin'), url(/sites/gta/Style%20Library/fonts/robotoSlab/RobotoSlab-Thin.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Roboto';
+  font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 700;
   src: local('RobotoSlab Bold'), local('RobotoSlab-Bold'), url(/sites/gta/Style%20Library/fonts/robotoSlab/RobotoSlab-Bold.ttf) format('truetype');
@@ -70,9 +70,17 @@
 
 /*********** gloabl ************/
 .ms-backgroundImage {
-  background: url(/sites/gta/SiteAssets/starsStripesLighter.png);
+  /*background: url("/sites/gta/SiteAssets/starsStripesLighter.png");
   background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
+  background-color: #ddd;
+}
+
+.ms-core-pageTitle,
+.ms-core-pageTitle a {
+  font-weight: 400;
+  font-family: "Roboto Slab", "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+  color: #667cb9
 }
 
 .ms-srch-sb {
@@ -126,14 +134,20 @@ nav {
 }
 
 .container-links ul {
+    font-family: "Roboto";
+    font-size: 1.0em;
+    font-weight: 400;
     list-style-type: none;
     padding: 0px;
     margin-left: 5px;
     margin-right: 5px;
+    letter-spacing: .9px;
 }
 
 .container-links-title {
-  font-size: 1.7em;
+  font-family: "Roboto Slab";
+  font-weight: 500;
+  font-size: 1.6em;
   padding: 5px 10px;
   color: #fff;
   display: block;
@@ -147,7 +161,7 @@ nav {
   padding: 2px;
   margin: 2px 0px;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.34em;
   color: #667cb9;
 }
 
@@ -214,8 +228,8 @@ nav {
 #businessProcess.zoomProcessOutline {
   position: absolute;
   left: 0px;
-  height: calc(100% - 40px);
-  min-height: 320px;
+  min-height: calc(100% - 40px);
+  /* min-height: 320px; */
   width: 100%;
   border-radius: 0px;
   background-color: rgba(154,190,221,.5);
@@ -226,10 +240,48 @@ nav {
 
 #businessProcess.zoomProcessOutline .sectionTitle {
   font-size: 1.7em;
+  background-color: rgb(102, 124, 185);
 }
 
 .clearfix::after {
   content: "";
   display: table;
   clear: both;
+}
+
+#businessProcess.zoomProcessOutline .orgEntity {
+  background-color: rgba(102, 124, 185, .5);
+}
+
+#businessProcess.zoomProcessOutline .orgEntity {
+  padding: 10px;
+}
+
+#businessProcess.zoomProcessOutline .orgEntity .containerProcess{
+  padding-top: 12px;
+}
+
+.card.process .cardTitle {
+  background-color: rgba(102, 124, 185, .8);
+}
+
+.card.process .cardTitle:hover {
+  background-color: #fff;
+}
+
+.card.process .cardTitle a,
+.card.process .cardTitle a:visited {
+color: #efefef;
+font-size: 1.3rem;
+padding: 5px;
+}
+
+.card.process .cardTitle a:hover {
+  color: #444;
+}
+
+.subprocess .cardTitle a,
+.card.process .cardTitle a:visited {
+  font-size: 1.1rem;
+  font-weight: 400;
 }
