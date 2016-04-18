@@ -160,7 +160,7 @@ $(document).ready(function () {
                   '<div class="phone contactAttr">Phone: ' + item.phone + '</div>' +
                   '<div class="office contactAttr">Location: ' + item.location + '</div>' +
                   '<div class="employeeRole contactAttr">Role: ' + item.role + '</div>' +
-                  '<div class="title contactAttr">Postion Title: ' + item.jobTitle + '</div>' +
+                  '<div class="title contactAttr">Position Title: ' + item.jobTitle + '</div>' +
                   '<div class="responsibilities contactAttr">Responsibilities:   ' + item.responsibility + '</div>' +
 
                   /*'<div class="manager contactAttr">Manager: ' + manager + '</div>' + */

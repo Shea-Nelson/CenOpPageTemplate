@@ -3,10 +3,14 @@ var customLinksListName = 'Helpful Links';
 var announcementsListName = 'Announcements';
 var currentUrl = window.location.href.toUpperCase();
 console.log(currentUrl);
+var pageName = currentUrl.substring(currentUrl.lastIndexOf('/PAGES/') + 7, currentUrl.length);
+console.log('page name is ' + pageName);
 currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/PAGES'));
 console.log(currentUrl);
 var processId = currentUrl.substring(currentUrl.lastIndexOf('/') + 1, currentUrl.length);
 var parentProcessId = currentUrl.substring(currentUrl.lastIndexOf('/PROCESS/') + 9, currentUrl.lastIndexOf('/'));
+var processName = '';
+var subprocessName = '';
 var dateToday = new Date();
 console.log(processId);
 console.log(parentProcessId);
@@ -96,7 +100,7 @@ $('#processOutline').load('/sites/gta/SiteAssets/code/gta_process_map/index.html
   /************ Show Only Relevant Process ***********/
   if (parentProcessId.length > 1) {
     console.log('This is a subprocess');
-    addGlobalNavigation('subprocess');
+    /*addGlobalNavigation('subprocess');*/
     $('#supportProcess').css('display', 'none');
     $('.containerProcess').css('display', 'none');
     console.log('#container' + parentProcessId.toUpperCase());
@@ -107,7 +111,7 @@ $('#processOutline').load('/sites/gta/SiteAssets/code/gta_process_map/index.html
 
     $('#businessProcess').addClass('zoomProcessOutline');
   } else if (processId != 'gta') {
-    addGlobalNavigation('process');
+    /*addGlobalNavigation('process');*/
     console.log('this is a process');
     $('#supportProcess').css('display', 'none');
     $('.containerProcess').css('display', 'none');
@@ -123,10 +127,50 @@ $('#processOutline').load('/sites/gta/SiteAssets/code/gta_process_map/index.html
   } else {
     console.log('something is wrong');
   }
-
-  /************ Add Global Bread Crumbs ************/
-
-  function addGlobalNavigation(processType) {
-    document.styleSheets[0].addRule('#pageTitle::before', 'content: "'+processType+'";');
-  }
 });
+
+/************ Add Global Bread Crumbs ************/
+if (parentProcessId.length > 1  && pageName != 'INDEX.ASPX') {
+  console.log('This is a subprocess');
+  addGlobalNavigation('subprocess');
+} else if (processId != 'gta' && pageName != 'INDEX.ASPX') {
+  addGlobalNavigation('process');
+}
+
+function addGlobalNavigation(processType) {
+  var url = '/sites/gta/SiteAssets/code/pageTemplates/CenOpPageTemplate/data/acronym.jsn';
+  var callback = function (response) {
+    console.log(response);
+    if (processType == 'process') {
+      $.each(response, function (i, item) {
+        if (item.acronym == processId.toUpperCase()) {
+          processName = item.title;
+          $('#DeltaPlaceHolderPageTitleInTitleArea').after(': <a href="' + currentUrl + '">' + processName + '</a>');
+          /*document.styleSheets[0].addRule('#pageTitle::before', 'content: "' + processName + '";');*/
+          console.log(processName + ' ' + currentUrl);
+        }
+      });
+    }
+    if (processType == 'subprocess') {
+      $.each(response, function (i, item) {
+        if (item.acronym == processId.toUpperCase()) {
+          subprocessName = item.title;
+          processName = item.parent;
+          $('#DeltaPlaceHolderPageTitleInTitleArea').after('<a href="' +
+            currentUrl + '">' +
+            subprocessName + '</a>');
+          $('#DeltaPlaceHolderPageTitleInTitleArea').after(': <a href="' +
+           currentUrl.substring(0, currentUrl.lastIndexOf('/')) + '">' +
+           processName + ' - </a>');
+          /*document.styleSheets[0].addRule('#pageTitle::before', 'content: "' + processName + '";');*/
+          console.log(subprocessName + ' ' + processName + ' ' + currentUrl);
+        }
+      });
+    }
+  };
+
+  $.getJSON(url, callback);
+}
+
+/************ Move Search to suiteBarLeft ************/
+/*$('#SearchBox').detach().appendTo('#s4-bodyContainer');*/

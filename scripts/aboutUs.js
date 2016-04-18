@@ -36,6 +36,10 @@ $.ajax({
       missionHtml = missionHtml + "<div class='articleContent'>" + data.d.results[i].aboutContent + "</div></div>";
       $("#mission").addClass('articleContainerShow');
       aboutUsHtml = aboutUsHtml + missionHtml;
+    } else if (data.d.results[i].aboutTypeProcess == "Purpose") {
+    purposeHtml = purposeHtml + "<div class='articleContent'>" + data.d.results[i].aboutContent + "</div></div>";
+    $("#purpose").addClass('articleContainerShow');
+    aboutUsHtml = aboutUsHtml + purposeHtml;
     } else if (data.d.results[i].aboutTypeProcess == "Goal") {
       goalHtml = goalHtml + "<div class='articleContent'>" + data.d.results[i].aboutContent + "</div>";
 $     ("#goal").addClass('articleContainerShow');
